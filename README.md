@@ -1,20 +1,128 @@
-# Blood Pressure Web Recorder
+# Blood Pressure Web Monitoring (BPWM)
 A web application that allows users to capture and record blood pressure measurements through photo recognition.
 
 ## Project Overview
-BPMR is a web application that utilizes computer vision and OCR capabilities to extract blood pressure readings from photos of blood pressure monitors. This initial version focuses on the core functionality of processing and displaying readings from uploaded monitor photos.
+BPWM is a Python-based application that leverages OpenAI's GPT-4 Vision capabilities to accurately extract blood pressure readings from monitor photos. The system processes images to detect systolic pressure, diastolic pressure, and pulse rate measurements.
 
 Features (v1.0)
-- Image processing using OpenAI 4.0 Mini
-- OCR-based extraction of systolic and diastolic readings
-- Display of processed readings
-- Basic error handling for image processing
+- Automated extraction of blood pressure readings from photos
+- Support for multiple blood pressure monitor types
+- Validation of extracted measurements
+- Error handling 
+- Base64 image encoding
+- Secure API key management
+- Timestamp tracking for measurements
 
+    
 ## Technical Stack
 
 ### Backend:
 - Python 3.9+
-- OpenAI GPT-4o mini
+- OpenAI GPT-4 Vision API
+- Dependencies from requirements.txt
+
+## Dependencies
+```
+openai>=1.3.0
+python-dotenv>=1.0.0
+```
+
+## Installation
+
+1. Clone the repository:
+```
+git clone https://github.com/kk-learn-ai/blood_pressure_recorder.git
+cd blood_pressure_recorder
+```
+
+2. Create Conda Environment
+```
+conda create --name bpr python
+conda activate bpr
+```
+
+3. Install dependencies:
+```
+pip install -r requirements.txt
+```
+
+4. Configure environment:
+```
+cp .env.example .env
+# Replace your OpenAI API key accordingly in the .env file
+```
+
+## Project Structure
+blood_pressure_recorder/
+├── config/
+│   └── prompts.yaml
+├── src/
+│   ├── vision_processor.py
+│   ├── api_key_manager.py
+│   └── main.py
+├── tmp_images
+├── .env
+├── requirements.txt
+└── README.md
+
+## Error Handling
+The system includes error handling for:
+- Invalid API keys
+- Missing or corrupt image files
+- Failed image processing
+- Invalid blood pressure readings
+- API communication errors
+
+## Measurement Validation
+Blood pressure readings are validated against these ranges:
+- Systolic: 60-250 mmHg
+- Diastolic: 40-130 mmHg
+- Pulse: 40-200 BPM
+
+## Running the Application
+
+1. Run the main script:
+
+```bash
+python src/main.py
+```
+
+2. To process a different image, modify the image path in main.py:
+
+```python
+result = processor.analyze_image("path/to/your/image.jpg")
+```
+
+## Customizing System Prompt
+
+1. Navigate to `config/prompts.yaml`
+
+2. Modify the vision prompt according to your needs:
+
+```text
+vision_prompt: |
+  Please analyze this blood pressure monitor image and extract:
+  1. Systolic pressure 
+  2. Diastolic pressure 
+  3. Pulse rate 
+
+  Return only these numbers in format: systolic/diastolic/pulse
+  If any value is not visible, use 'None' for that position.
+```
+
+3. The prompt must maintain the output format systolic/diastolic/pulse for proper parsing
+
+4. Save the file and restart the application for changes to take effect
+
+Note: If the YAML file is missing or invalid, the system will fall back to the default prompt defined in the VisionProcessor class.
+
+## Future Enhancements
+- Web interface for image upload
+- User authentication
+- Reading history and trends
+- Report generation
+- Notification to contacts
+- Cloud storage integration
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
