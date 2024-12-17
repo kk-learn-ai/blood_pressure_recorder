@@ -25,6 +25,7 @@ Features (v1.0)
 ```
 openai>=1.3.0
 python-dotenv>=1.0.0
+pyyaml>=6.0.1
 ```
 
 ## Installation
@@ -55,15 +56,16 @@ cp .env.example .env
 ## Project Structure
 blood_pressure_recorder/
 ├── config/
-│   └── prompts.yaml
+│   └── prompts.yaml         # System prompts configuration
 ├── src/
-│   ├── vision_processor.py
-│   ├── api_key_manager.py
-│   └── main.py
-├── tmp_images
-├── .env
-├── requirements.txt
-└── README.md
+│   ├── vision_processor.py  # Core vision processing logic
+│   ├── api_key_manager.py   # API key management
+│   └── main.py             # Application entry point
+├── tmp_images/             # Directory for temporary image storage
+├── .env                    # Environment variables and API keys
+├── requirements.txt        # Project dependencies
+└── README.md              # Project documentation
+
 
 ## Error Handling
 The system includes error handling for:
