@@ -1,0 +1,8 @@
+vision_prompt: |
+  Please analyze this blood pressure monitor image and extract:
+  1. Systolic pressure 
+  2. Diastolic pressure 
+  3. Pulse rate 
+
+  Return only these numbers in format: systolic/diastolic/pulse
+  If any value is not visible, use 'None' for that position.
