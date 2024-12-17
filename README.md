@@ -132,3 +132,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 Project Maintainer: kk
+
+## AI Assistance Disclosure
+
+This project was developed with the assistance of:
+- Claude 3.5 for code generation and documentation
+
+All AI-generated code has been reviewed and validated by human developers to ensure quality and security.
