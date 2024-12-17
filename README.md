@@ -54,6 +54,7 @@ cp .env.example .env
 ```
 
 ## Project Structure
+```text
 blood_pressure_recorder/
 ├── config/
 │   └── prompts.yaml         # System prompts configuration
@@ -65,7 +66,7 @@ blood_pressure_recorder/
 ├── .env                    # Environment variables and API keys
 ├── requirements.txt        # Project dependencies
 └── README.md              # Project documentation
-
+```
 
 ## Error Handling
 The system includes error handling for:
